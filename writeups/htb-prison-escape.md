@@ -34,7 +34,7 @@ Putting this data into the packet sender, along with the parameters we got from 
 
 Nothing happens. Hmm. So we've missed something here. It's likely to do with that `ff` byte that hasn't changed. We'll need to figure out what that byte is for to complete the challenge.
 
-## The missing byte
+## The Missing Byte
 So given that this byte hasn't changed in any of the packets we've intercepted it can be difficult to determine what it's for. People that work with RF protocols frequently might be rolling their eyes but for me this was fairly new territory. My initial thought was that it was something to do with preventing replay attacks. The byte would have to be changed to some other number determined by an inbuilt algorithm before the packet would be accepted. This is how some car remotes and garage door openers work. So I created a script to cycle through that bit and generate the checksum before sending a `POST` with that info to the `transmit` endpoint on the mission interface.
 
 You can do this yourself if you'd like before we continue. 
@@ -46,7 +46,7 @@ Initially I was cycling a laser packet, so my interface looked like this:
 
 Now maybe I'm just an idiot, but the way I interpreted this screen was that I had trigged the alarm on the E1 laser. If you, like me, though the alarm had been tripped because a tampered packet had been detected and something still wasn't quite right with the data we're sending, let me save you some time. This screen is showing that the E1 laser has been turned off, however as the document says, any tampering with the laser system results in the alarms going off. A green alarm in this case is a bad thing. What didn't help my confusion was the fact that sending a turn on packet to a laser also resulted in the alarm being triggered.
 
-So if you're looking at that byte in the packet that turned off the alarm, you'll see that it's `a1`. Hmm? `a1`? As in the first alarm? Of course! The document says that the alarms send a broadcast packet every so often. Broadcasts are normally addressed to the highest bit value in many things. Which means byte 9 is the sender, and byte 10 is the intended receiver. The document doesn't mention the lasers _sending_ notice of their movements (or anything else about the lasers for that matter) but we can assume this is also where the move left and move right packets were originating from. Vague documentation is always a nightmare.
+So if you're looking at that byte in the packet that turned off the alarm, you'll see that it's `a1`. Hmm? `a1`? As in the first alarm? Of course! The document says that the alarms send a broadcast packet every so often. Broadcasts are normally addressed to the highest bit value in many things. Which means byte 9 is the sender, and byte 10 is the intended receiver. The document doesn't mention the lasers _sending_ notice of their movements (or anything other than the packet identifiers for that matter) but we can assume this is also where the move left and move right packets were originating from. Devs keep note, vague documentation is always a nightmare.
 
-So the correct solution is to send a suppression packet to all the alarms first before turning off all three lasers. 
+With all this information in hand we can now figure out the correct solution is to send a suppression packet to all the alarms first before turning off all three lasers. 
 ![The almost completed mission screen](/content/images/htb-challenges/prison-escape/htb-prison-escape-complete.png)
