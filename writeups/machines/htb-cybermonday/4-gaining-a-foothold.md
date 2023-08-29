@@ -24,7 +24,7 @@ Now we have our payload and session id, we need to prepare them in both the [[re
 
 So whats going on here? Well commands are passed to RESP as an array. We're passing 3 arguments so we start our string with `*3` with `*` specifying that this is an array. Each data type identifier or piece of data is ended with `\r\n`. Next we specify the command we want to use. Our command `SET` is 3 bytes long so we specify the length as `$3` with `$` specifying that this is a "bulk string". Next is our actual command `SET`, and what follows is the same procedure with our `key` and `value` arguments for the full command. Next we escape the string so that it's passed to the webhook server properly, and we send our `curl` request:
 ```bash
-curl http://webhooks-api-beta.cybermonday.htb/webhooks/<webhook guid> \
+curl http://webhooks-api-beta.cybermonday.htb/webhooks/<webhook id> \
 -H 'x-access-token: <your token>' \
 -H 'Content-Type: application/json' \
 -d '{"url": "http://redis:6379", "method": "<your prepared resp string>"}'

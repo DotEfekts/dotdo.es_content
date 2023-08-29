@@ -24,7 +24,7 @@ We'll need to know what the IP range of our network is, but `ifconfig` and `ip` 
 ```bash
 hostname -I
 
-172.18.0.6
+<container ip>
 ```
 
 So now how do we scan this network? Enter [Chisel](https://github.com/jpillora/chisel) a network tunnel that supports reverse proxy. Download Chisel to both your own device and the container. (As HTB machines don't have an internet connection you will need to use `python3 -m http.server` and then `curl` in the container to download Chisel from your device.) Once you have `chisel` ready to go, you can start the server on your device:
@@ -41,7 +41,7 @@ Once the container is connected, Chisel will tell you the port on your device to
 
 Personally I found that running `nmap` on one IP at a time was far quicker than having it scan a range. This was likely because I've misconfigured something or used a wrong flag, but in any case you can scan the network in whatever fashion you please. As `ICMP` packets can't be sent through the `SOCKS` proxy, you'll need to disable host detection for the scan and use the `Connect` method. As such your command should look something like this:
 ```
-proxychains nmap -sT 172.18.0.1 -Pn -oG logs/docker_1_scan -v
+proxychains nmap -sT <ip to scan> -Pn -oG logs/docker_1_scan -v
 ```
 
 Once you've finished scanning, you'll see a number of services we're already aware of, such as Redis, MySQL, and the webhook API. One service that we haven't been aware of so far is one on port `5000`. A quick Google tells us this is likely to be a Docker registry service. 

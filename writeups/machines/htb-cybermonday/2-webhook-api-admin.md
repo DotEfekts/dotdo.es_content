@@ -67,7 +67,7 @@ curl -X POST http://webhooks-api-beta.cybermonday.htb/webhooks/create \
 -H "Content-Type: application/json" \
 -d '{"description": "ssrf", "name": "ssrfHook", "action": "sendRequest"}'
 
-{"status":"success","message":"Done! Send me a request to execute the action, as the event listener is still being developed.","webhook_uuid":"22c370c6-c063-440f-8492-1f20051db38f"}
+{"status":"success","message":"Done! Send me a request to execute the action, as the event listener is still being developed.","webhook_uuid":"<webhook id>"}
 ```
 
 Success! Now lets see what we can get up to with this new endpoint.
