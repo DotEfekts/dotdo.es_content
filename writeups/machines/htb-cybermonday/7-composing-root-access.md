@@ -6,7 +6,7 @@
 [Gaining a Foothold](/writeups/machines/htb-cybermonday/4-gaining-a-foothold)
 [Where to Now?](/writeups/machines/htb-cybermonday/5-where-to-now)
 [Reading the Source](/writeups/machines/htb-cybermonday/6-reading-the-source)
-**[Composing Root Access](/writeups/machines/htb-cybermonday/7-composing-root-access)**
+[**Composing Root Access**](/writeups/machines/htb-cybermonday/7-composing-root-access)
 
 Okay, I know that getting to user was a slog, but getting root is much easier, I promise. Look this is the last part left. After doing our initial enumeration again, we don't find much that could be exploited except for a [[python|Python]] script called `secure_compose.py`. We're able to read the file so let's view it and see what's going on.
 ```python

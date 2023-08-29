@@ -4,7 +4,7 @@
 [Webhook API Admin Access](/writeups/machines/htb-cybermonday/2-webhook-api-admin)
 [Obtaining More Info](/writeups/machines/htb-cybermonday/3-obtaining-more-info)
 [Gaining a Foothold](/writeups/machines/htb-cybermonday/4-gaining-a-foothold)
-**[Where to Now?](/writeups/machines/htb-cybermonday/5-where-to-now)**
+[**Where to Now?**](/writeups/machines/htb-cybermonday/5-where-to-now)
 [Reading the Source](/writeups/machines/htb-cybermonday/6-reading-the-source)
 [Composing Root Access](/writeups/machines/htb-cybermonday/7-composing-root-access)
 
