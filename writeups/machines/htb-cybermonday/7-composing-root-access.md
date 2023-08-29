@@ -1,4 +1,4 @@
-# Composing Root Access
+# Cybermonday - Composing Root Access
 
 [Initial Enumeration](/writeups/machines/htb-cybermonday/1-initial-enumeration)
 [Webhook API Admin Access](/writeups/machines/htb-cybermonday/2-webhook-api-admin)
