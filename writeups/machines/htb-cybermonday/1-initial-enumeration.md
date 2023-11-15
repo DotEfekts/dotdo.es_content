@@ -1,4 +1,5 @@
-# Cybermonday - Initial Enumeration
+The [Cybermonday](https://app.hackthebox.com/machines/557) box was my first hard Hack the Box challenge and phew, it was a lot. You should have a good grasp of application logic, JSON and Web APIs, serialisation methods, and Docker. All of these and more come into play on this box.
+# HTB Cybermonday - Initial Enumeration
 
 [**Initial Enumeration**](/writeups/machines/htb-cybermonday/1-initial-enumeration)
 [Webhook API Admin Access](/writeups/machines/htb-cybermonday/2-webhook-api-admin)

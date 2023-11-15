@@ -1,4 +1,4 @@
-# Cybermonday - Webhook API Admin Access
+# HTB Cybermonday - Webhook API Admin Access
 
 [Initial Enumeration](/writeups/machines/htb-cybermonday/1-initial-enumeration)
 [**Webhook API Admin Access**](/writeups/machines/htb-cybermonday/2-webhook-api-admin)
