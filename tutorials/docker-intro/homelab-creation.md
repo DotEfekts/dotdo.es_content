@@ -7,7 +7,7 @@
 ## Putting It All Together
 At this point we've learnt enough to put together a basic service stack that you can then build on. We're going to be putting this together in a modular way, so you can pick and choose which of the following you want to add to your stack.
 
-> If you do not own a domain name you will not be able to continue using domains for Traefik after the workshop. You should modify the compose configurations to remove the Traefik service and the Traefik labels on the other containers, and use the `ports:` setting in the compose files instead to open those services to your local network.
+> If you do not own a domain name you will not be able to continue using domains for Traefik after the workshop. When setting this up in your main homelab, you should modify the compose configurations to remove the Traefik service and the Traefik labels on the other containers, and use the `ports:` setting in the compose files instead to open those services to your local network.
 ### Using Portainer
 Before we start, ensure you've stopped and deleted any containers or compose stacks from the previous tasks. We'll need a directory to store config and data files for our services. Create a new directory and note the path. Replace any references to `/path/to/your/data` with this directory.
 #### Portainer Setup
