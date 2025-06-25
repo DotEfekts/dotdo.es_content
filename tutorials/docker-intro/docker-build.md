@@ -5,7 +5,7 @@
 [**Docker Build**](/tutorials/docker-intro/docker-build)
 [Putting it All Together](/tutorials/docker-intro/homelab-creation)
 ## Docker Build
-## Basic Dockerfile
+### Basic Dockerfile
 A Dockerfile is how we define instructions for creating a Docker image. To start, we'll create a simple image that will just print `Hello World!` when ran, using a Python script.
 
 1. Create a new directory called `helloworld-build` and create a `hello-world.py` file with the following:

@@ -10,7 +10,7 @@ Let's take our Mario game container and run it in `compose` instead.
 
 1. Create a directory called `mario-compose` (or whatever else you like) and then create a file in that directory called `docker-compose.yml` (NOT whatever else you like) with the following contents:
 
-```yml
+```yaml
 # mario-compose/docker-compose.yml
 services:
   mario:
@@ -28,7 +28,7 @@ Sometimes a container will rely on another container being available, for exampl
 
 1. Create a new directory called `hedgedoc-compose` and then a `docker-compose.yml` file with the following contents:
 
-```yml
+```yaml
 # hedgedoc-compose/docker-compose.yml
 services:
   doc-database:
@@ -57,7 +57,6 @@ volumes:
   database:
   uploads:
 ```
-(from https://docs.hedgedoc.org/setup/docker/)
 
 2. Bring the services up with `docker compose up -d`.
 3. Check the service is running at `http://localhost:3000`.
@@ -91,7 +90,7 @@ Often we'd like to access our docker services using names rather than port, whic
 1. Create a new directory called `traefik-compose`.
 2. Create a new file called `traefik.yml` in the new directory with the following contents:
 
-```yml
+```yaml
 # traefik-compose/traefik.yml
 providers:
   docker: {}
