@@ -5,9 +5,9 @@ For this challenge, we're given some details about a "fortune teller" that left 
 ```
 dot@stuff:~$ sudo nmap -sS office.centrist.freedonia.vote
 Starting Nmap 7.95 ( https://nmap.org ) at 2025-07-25 01:49 UTC
-Nmap scan report for office.centrist.freedonia.vote (54.153.192.232)
+Nmap scan report for office.centrist.freedonia.vote (192.168.1.1)
 Host is up (0.017s latency).
-rDNS record for 54.153.192.232: ec2-54-153-192-232.ap-southeast-2.compute.amazonaws.com
+rDNS record for 192.168.1.1: ec2-54-153-192-232.ap-southeast-2.compute.amazonaws.com
 Not shown: 995 closed tcp ports (reset)
 PORT   STATE    SERVICE
 7/tcp  open     echo
@@ -22,7 +22,7 @@ dot@stuff:~$ nc office.centrist.freedonia.vote 17
 
 If you want your luck to hold, make sure you have the winning numbers.
 Got off at the wrong stop? Maybe you should try a different form of transport.
-cysea{y0uv3_n3773d_a_f0r7un3_c0n6ratul4tion5}
+cysea{y0uv3_n3773d_a_f0r7un3}
 ```
 Connecting to the service doesn't provide anything initially, but if we hit enter a few times we receive back a random quote each time. There are three that are cycled between: A quote about having the winning numbers, a quote about trying different forms of transport, and finally the flag for the first challenge. We can take the flag and then move on to challenge number 2.
 ## Lottery ticket
@@ -46,7 +46,7 @@ dot@stuff:~$ nc office.centrist.freedonia.vote 9 -u
 
 dot@stuff:~$ nc office.centrist.freedonia.vote 7 -u
 
-cysea{fr33d0n14_5ta73_l0773ry_numb3r5_202,97,131,1033}
+cysea{fr33d0n14_numb3r5_202,97,131,1033}
 ```
 We now have both the flag and the lottery numbers, and can move on to the final challenge.
 ## Canvassing is hard work
@@ -73,9 +73,9 @@ After we run this script, we should use `nmap` again to see if any new services 
 ```
 dot@stuff:~$ sudo nmap -sS office.centrist.freedonia.vote
 Starting Nmap 7.95 ( https://nmap.org ) at 2025-07-25 09:51 AWST
-Nmap scan report for office.centrist.freedonia.vote (54.153.192.232)
+Nmap scan report for office.centrist.freedonia.vote (192.168.1.1)
 Host is up (0.051s latency).
-rDNS record for 54.153.192.232: ec2-54-153-192-232.ap-southeast-2.compute.amazonaws.com
+rDNS record for 192.168.1.1: ec2-54-153-192-232.ap-southeast-2.compute.amazonaws.com
 Not shown: 994 closed tcp ports (reset)
 PORT   STATE    SERVICE
 7/tcp  open     echo
@@ -144,6 +144,6 @@ ftp> quote HELP XATR
 Aha, this looks promising. `xattrs`, or "Extended file attributes" are extra information about a file that you can set. They're not standard file system attributes, and aren't normally transferred when downloading via FTP. If you're familiar with FTP commands, or lookup each command, you'll find that `XATR` is not standard in FTP servers and is likely a custom command, almost certainly what we're looking for. Let's run the command on the `flag.txt` file and see what happens.
 ```
 ftp> quote XATR flag.txt
-200 xattr fetched {'user.flag': b'cysea{wh47_4_6r34t_h1d1n6_5p07_th15_i5}'}.
+200 xattr fetched {'user.flag': b'cysea{fl4g_r3d4ct3d_s0rry}'}.
 ```
 Success! We've found our flag and completed the challenges.
