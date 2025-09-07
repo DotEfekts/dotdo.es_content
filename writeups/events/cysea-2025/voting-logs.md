@@ -37,8 +37,8 @@ with open('backend-codebase/app.py', "r") as key_file:
 print(create_jwt_token("CIT1337", "Jane Doe", "Izzi", "/app/app.py", key))
 ```
 Then we use the resulting JWT to call the `/submit-vote` endpoint:
-```
-dot@Serpentis:~$ curl http://mobile-app.commission.freedonia.vote/api/voting/submit-vote \
+```shell
+$ curl http://mobile-app.commission.freedonia.vote/api/voting/submit-vote \
 > -H "Content-Type: application/json" \
 > -H "Authorization: Bearer <Your JWT>" \
 > --data '{"party": "test party"}'

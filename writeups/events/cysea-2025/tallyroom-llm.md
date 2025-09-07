@@ -81,7 +81,7 @@ To start the challenge, we can actually ask the AI agent itself about the tools 
 This isn't particularly helpful in and of itself, but the log tool is going to be interesting later. The way that many LLMs interact with tools such as these is via protocols such as Model Context Protocol (MCP) or Agent2Agent Protocol (A2A). In my case, I got lucky and found the MCP domain in use while using `gobuster` trying to find the API docs in [This Things Rigged](/writeups/events/cysea-2025/this-things-rigged). We can use [MCP Inspector](https://github.com/modelcontextprotocol/inspector) to interact with the toolbox directly using this URL.
 ### Connecting to the Toolbox
 We can launch MCP Inspector using `npx`, however the challenge had a bug where the SSL certificate doesn't validate, so I needed to set node to ignore this.
-```
+```shell
 dot@stuff:~$ export NODE_TLS_REJECT_UNAUTHORIZED=0
 dot@stuff:~$ npx @modelcontextprotocol/inspector
 ```

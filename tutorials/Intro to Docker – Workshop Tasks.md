@@ -296,7 +296,7 @@ Let's step through this file again to see what each instruction is doing:
 4. Once the image is built, find the `Image ID` using `docker image ls`. It will show up as `<none> <none>` for the repository and tag.
 5. Run the image with `docker run --rm <Image ID>`.
 
-```bash
+```
 Hello World!
 ```
 

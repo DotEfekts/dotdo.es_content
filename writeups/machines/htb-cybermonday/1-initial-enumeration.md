@@ -10,8 +10,8 @@ The [Cybermonday](https://app.hackthebox.com/machines/557) box was my first hard
 [Composing Root Access](/writeups/machines/htb-cybermonday/7-composing-root-access)
 
 First we run [[nmap|`nmap`]] to see what services are available on the box.
-```bash
-nmap -sV --open -oG initial_scan <machine ip>
+```shell
+$ nmap -sV --open -oG initial_scan <machine ip>
 
 Host: <machine ip> ()
 Ports: 

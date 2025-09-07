@@ -2,7 +2,7 @@
 In this challenge, we're told that there was a mismatch in votes and asked if it's possible to tamper with the printed receipts. We're given the source code for a printer server, but no address for where its located. 
 ### Finding the Server
 When attempting to solve this challenge, you should already have the address for the mobile voting app backend, as well as have found the private polling key to allow access to the admin API functions. In those functions there's a `/get-config` endpoint which will return the current config for the polling location that our authentication key was generated for. 
-```
+```shell
 dot@stuff:~/Development/CTF/Archive/cysea 2025/week 4$ curl http://mobile-app.commission.freedonia.vote/api/admin/get-config -H "Authorization: Bearer 6e6f747468657265616c746f6b656e"
 {"printer":"192.168.1.1"}
 ```

