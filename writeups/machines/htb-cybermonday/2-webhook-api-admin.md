@@ -34,7 +34,7 @@ $ curl -X POST http://webhooks-api-beta.cybermonday.htb/webhooks/fda96d32-e8c8-4
 
 This must be a `createLogFile` webhook. Sending a `POST` with both the `log_name` and `log_content` fields doesn't seem to get us anything beyond a `Log created` message so lets leave that for now.
 
-The login endpoint has a username and password so lets try some [[weak-credentials|basic credentials]] like `admin:admin`. No luck there, let's go ahead and create an account for now. Once our account is created and we've logged in we obtain a JWT to use for our requests in the `x-access-token` header. Trying the `GET /webhooks` endpoint again we can now get a list of endpoints but there's only the `createLogFile` endpoint that we used before (unless there are other people also attempting to hack the box). If we try to use `/webhooks/create` however, we find we're still unauthorized. If we [inspect our JWT](https://jwt.io/) we find it holds the following payload:
+The login endpoint has a username and password so lets try some basic credentials like `admin:admin`. No luck there, let's go ahead and create an account for now. Once our account is created and we've logged in we obtain a JWT to use for our requests in the `x-access-token` header. Trying the `GET /webhooks` endpoint again we can now get a list of endpoints but there's only the `createLogFile` endpoint that we used before (unless there are other people also attempting to hack the box). If we try to use `/webhooks/create` however, we find we're still unauthorized. If we [inspect our JWT](https://jwt.io/) we find it holds the following payload:
 ```json
 {
   "typ": "JWT",
@@ -47,7 +47,7 @@ The login endpoint has a username and password so lets try some [[weak-credentia
 }
 ```
 
-So our role may be what's holding us back here. Since the security algorithm is RS256 the server may be open to an [[jwt-exploits|algorithm switching attack]]. First we need the public key our token. Querying the usual paths on the server we find the information in the `/jwks.json` path. From that we can extract the public key. Next we use `jwt_tool` to alter the payload and resign the token. 
+So our role may be what's holding us back here. Since the security algorithm is RS256 the server may be open to an algorithm switching attack. First we need the public key our token. Querying the usual paths on the server we find the information in the `/jwks.json` path. From that we can extract the public key. Next we use `jwt_tool` to alter the payload and resign the token. 
 
 First we'll extract the public key from the `jwks.json` file, then tamper with the payload and signature.
 ```shell

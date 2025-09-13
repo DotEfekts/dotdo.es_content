@@ -9,7 +9,7 @@ The [Cybermonday](https://app.hackthebox.com/machines/557) box was my first hard
 [Reading the Source](/writeups/machines/htb-cybermonday/6-reading-the-source)
 [Composing Root Access](/writeups/machines/htb-cybermonday/7-composing-root-access)
 
-First we run [[nmap|`nmap`]] to see what services are available on the box.
+First we run `nmap` to see what services are available on the box.
 ```shell
 $ nmap -sV --open -oG initial_scan <machine ip>
 
@@ -19,7 +19,7 @@ Ports:
 80/open/tcp//http//nginx 1.25.1/
 ```
 
-[[ssh|SSH]] and a [[http|HTTP]] server. We don't have an credentials yet so we won't bother attempting to connect to the SSH server. Instead let's look at what's available on the HTTP server.
+SSH and a HTTP server. We don't have an credentials yet so we won't bother attempting to connect to the SSH server. Instead let's look at what's available on the HTTP server.
 
 Trying to connect to the server we're immediately redirected to `http://cybermonday.htb/`. Looks like we'll need to add the domain to our `/etc/hosts` file to continue. Once we've added that and navigated to the web page again we see an online shopping website, with various products and a landing page.
 
@@ -29,11 +29,11 @@ Enumerating through the pages doesn't seem to show anything interesting, so lets
 
 ![The Cybermonday profile page](/writeups/machines/htb-cybermonday/images/htb-cybermonday-profile.png)
 
-Opening this lets us edit different aspects of our account. Let's try some [[sql-injection|SQL injection]] to see if basic measures have at least been taken. No luck, we just have a funny name now. Instead lets see what happens if we try to set our username to admin.
+Opening this lets us edit different aspects of our account. Let's try some SQL injection to see if basic measures have at least been taken. No luck, we just have a funny name now. Instead lets see what happens if we try to set our username to admin.
 
 ![The Laravel debug page](/writeups/machines/htb-cybermonday/images/htb-cybermonday-laravel.png)
 
-Ah ha, [[debug-mode|a debug page]]. Here we can see the version of [[php|PHP]] and [[laravel|Laravel]] that are being used, as well as some details about the update function we've just used. If we scroll down we can see some user info. 
+Ah ha, a debug page. Here we can see the version of PHP and Laravel that are being used, as well as some details about the update function we've just used. If we scroll down we can see some user info. 
 
 ![The user details on the debug page](/writeups/machines/htb-cybermonday/images/htb-cybermonday-user.png)
 
@@ -41,7 +41,7 @@ That `isAdmin` field looks interesting. If we look back at the update function w
 
 ![The dashboard link is now shown](/writeups/machines/htb-cybermonday/images/htb-cybermonday-dashboard.png)
 
-Success, we've now had a new link added we can navigate to. If we look through we can see a few different pages. The dashboard seems to just be some placeholder graphs. On the products page we can add new products to the list on the products page. Looking at the images there however, they're sent through as data URLs so probably not useful for [[file-injection|file injection]].
+Success, we've now had a new link added we can navigate to. If we look through we can see a few different pages. The dashboard seems to just be some placeholder graphs. On the products page we can add new products to the list on the products page. Looking at the images there however, they're sent through as data URLs so probably not useful for file injection.
 
 ![The Cybermonday upload screen](/writeups/machines/htb-cybermonday/images/htb-cybermonday-upload.png)
 

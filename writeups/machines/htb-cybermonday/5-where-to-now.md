@@ -8,12 +8,12 @@
 [Reading the Source](/writeups/machines/htb-cybermonday/6-reading-the-source)
 [Composing Root Access](/writeups/machines/htb-cybermonday/7-composing-root-access)
 
-As you do all your regular enumeration you'll quickly realise (if you hadn't already) that this is a [[docker|Docker]] container. Sometimes you can break out of Docker containers, but in this case it seems the vulnerabilities are all covered. One interesting directory is `/mnt`. It looks like a home directory from the host system has been mounted here. You can see the user flag is tantalisingly close, but unfortunately we can't read it at the moment. What about `authorized_keys`? Well it already exists and isn't writeable, but it is readable.
+As you do all your regular enumeration you'll quickly realise (if you hadn't already) that this is a Docker container. Sometimes you can break out of Docker containers, but in this case it seems the vulnerabilities are all covered. One interesting directory is `/mnt`. It looks like a home directory from the host system has been mounted here. You can see the user flag is tantalisingly close, but unfortunately we can't read it at the moment. What about `authorized_keys`? Well it already exists and isn't writeable, but it is readable.
 ```
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCy9ETY9f4YGlxIufn... john@cybermonday
 ```
 
-Now we have a username we can try to use for [[ssh|`ssh`]] to the host. Trying some of the basic passwords to login doesn't get us anywhere so lets continue with our Docker box for now. We have a couple of things we can do from here. We can look through the source code of the entire Cybermonday shopping app, and we can use the MySQL credentials from the `.env` file to connect to the database. The container doesn't have `mysql` installed so you'll have to use a [[php|PHP]] script if you want to do that. With this method we can extract the password hashes for the admin user and your own account:
+Now we have a username we can try to use for `ssh` to the host. Trying some of the basic passwords to login doesn't get us anywhere so lets continue with our Docker box for now. We have a couple of things we can do from here. We can look through the source code of the entire Cybermonday shopping app, and we can use the MySQL credentials from the `.env` file to connect to the database. The container doesn't have `mysql` installed so you'll have to use a PHP script if you want to do that. With this method we can extract the password hashes for the admin user and your own account:
 ```
 1 - admin - admin@cybermonday.htb - $2y$10$6kJuFazZ...
 2 - dot - ctf@dotefekts.net - $2y$10$6xMtStxbhJkEf0...

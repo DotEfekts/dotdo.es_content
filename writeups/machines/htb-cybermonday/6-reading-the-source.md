@@ -75,7 +75,7 @@ $ curl http://webhooks-api-beta.cybermonday.htb/webhooks/fda96d32-e8c8-4301-8fb3
 {"status":"error","message":"This log does not exist"}
 ```
 
-No luck. But there is one file we can request the might be useful. Linux has a number of virtual directories in `/proc` that let you get the state of different processes. For the [[php|PHP]] server itself we can use `/proc/self`, and in particular `/proc/self/environ`.
+No luck. But there is one file we can request the might be useful. Linux has a number of virtual directories in `/proc` that let you get the state of different processes. For the PHP server itself we can use `/proc/self`, and in particular `/proc/self/environ`.
 ```shell
 $ curl http://webhooks-api-beta.cybermonday.htb/webhooks/fda96d32-e8c8-4301-8fb3-c821a316cf77/logs \
 -H "x-api-key: <api key>" \
