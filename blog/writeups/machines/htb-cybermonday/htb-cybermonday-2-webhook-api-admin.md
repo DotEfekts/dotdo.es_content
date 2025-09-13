@@ -1,12 +1,12 @@
 # HTB Cybermonday - Webhook API Admin Access
 
-[Initial Enumeration](1-initial-enumeration)
-[**Webhook API Admin Access**](2-webhook-api-admin)
-[Obtaining More Info](3-obtaining-more-info)
-[Gaining a Foothold](4-gaining-a-foothold)
-[Where to Now?](5-where-to-now)
-[Reading the Source](6-reading-the-source)
-[Composing Root Access](7-composing-root-access)
+[Initial Enumeration](htb-cybermonday-1-initial-enumeration.md)
+[**Webhook API Admin Access**](htb-cybermonday-2-webhook-api-admin.md)
+[Obtaining More Info](htb-cybermonday-3-obtaining-more-info.md)
+[Gaining a Foothold](htb-cybermonday-4-gaining-a-foothold.md)
+[Where to Now?](htb-cybermonday-5-where-to-now.md)
+[Reading the Source](htb-cybermonday-6-reading-the-source.md)
+[Composing Root Access](htb-cybermonday-7-composing-root-access.md)
 
 Navigating to the link itself just gets us a blank page. But if we go to the base URL (After adding the domain to our `hosts` file) we see a list of endpoints we can use.
 ```json
@@ -72,4 +72,4 @@ $ curl -X POST http://webhooks-api-beta.cybermonday.htb/webhooks/create \
 
 Success! Now lets see what we can get up to with this new endpoint.
 
-Next: [Obtaining More Info](3-obtaining-more-info)
+Next: [Obtaining More Info](htb-cybermonday-3-obtaining-more-info.md)

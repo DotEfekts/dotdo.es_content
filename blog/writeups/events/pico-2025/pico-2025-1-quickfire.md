@@ -1,7 +1,7 @@
 I'm back to participating in CTFs with [CASSA's RedRoom](https://cassa.au/redroom-flag-goes-here/) and starting things off with the picoCTF 2025 event. It was my first time in a timed event and it was fun relearning some of the things I learnt from Hack the Box and learning some new concepts as well.
 # picoCTF 2025 - Quick Fire Round
 
-[**Quick Fire Round**](1-pico2025-quickfire)
+[**Quick Fire Round**](pico-2025-1-quickfire.md)
 
 To start off I'll quickly list the easier challenges and how to solve them. If you're here looking for hints rather than answers turn away now!
 ### FANTASY CTF

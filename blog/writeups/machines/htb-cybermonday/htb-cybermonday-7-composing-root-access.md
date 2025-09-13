@@ -1,12 +1,12 @@
 # HTB Cybermonday - Composing Root Access
 
-[Initial Enumeration](1-initial-enumeration)
-[Webhook API Admin Access](2-webhook-api-admin)
-[Obtaining More Info](3-obtaining-more-info)
-[Gaining a Foothold](4-gaining-a-foothold)
-[Where to Now?](5-where-to-now)
-[Reading the Source](6-reading-the-source)
-[**Composing Root Access**](7-composing-root-access)
+[Initial Enumeration](htb-cybermonday-1-initial-enumeration.md)
+[Webhook API Admin Access](htb-cybermonday-2-webhook-api-admin.md)
+[Obtaining More Info](htb-cybermonday-3-obtaining-more-info.md)
+[Gaining a Foothold](htb-cybermonday-4-gaining-a-foothold.md)
+[Where to Now?](htb-cybermonday-5-where-to-now.md)
+[Reading the Source](htb-cybermonday-6-reading-the-source.md)
+[**Composing Root Access**](htb-cybermonday-7-composing-root-access.md)
 
 Okay, I know that getting to user was a slog, but getting root is much easier, I promise. Look this is the last part left. After doing our initial enumeration again, we don't find much that could be exploited except for a Python script called `secure_compose.py`. We're able to read the file so let's view it and see what's going on.
 ```python

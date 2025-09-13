@@ -1,12 +1,12 @@
 # HTB Cybermonday - Gaining a Foothold
 
-[Initial Enumeration](1-initial-enumeration)
-[Webhook API Admin Access](2-webhook-api-admin)
-[Obtaining More Info](3-obtaining-more-info)
-[**Gaining a Foothold**](4-gaining-a-foothold)
-[Where to Now?](5-where-to-now)
-[Reading the Source](6-reading-the-source)
-[Composing Root Access](7-composing-root-access)
+[Initial Enumeration](htb-cybermonday-1-initial-enumeration.md)
+[Webhook API Admin Access](htb-cybermonday-2-webhook-api-admin.md)
+[Obtaining More Info](htb-cybermonday-3-obtaining-more-info.md)
+[**Gaining a Foothold**](htb-cybermonday-4-gaining-a-foothold.md)
+[Where to Now?](htb-cybermonday-5-where-to-now.md)
+[Reading the Source](htb-cybermonday-6-reading-the-source.md)
+[Composing Root Access](htb-cybermonday-7-composing-root-access.md)
 
 Now that we have a possible attack vector we need to figure out how to implement it. In order to poison our Laravel session we need to know what the key for it is called in the Redis server. Laravel stores that information in a cookie that's sent to the client, however we can't just read it as it's encrypted. Lucky for us, thanks to the `.env` file, we have the key to that encryption. There are a number of scripts around to perform this decryption for us. I used the one from [hacktricks here](https://book.hacktricks.xyz/network-services-pentesting/pentesting-web/laravel#decrypt-cookie). Once you have the decryption script, set the app_key to the one in the `.env` file. Also take note of the `REDIS_PREFIX` value while you're there as we'll need this later.
 
@@ -32,4 +32,4 @@ $ curl http://webhooks-api-beta.cybermonday.htb/webhooks/<webhook id> \
 
 Make sure you've started your `netcat` listener, and then refresh the Cybermonday page. If all goes well, you'll have a reverse shell. If you get a deserialization error in Laravel that starts at byte 0, there was probably an issue in your formatting when sending the request. If the deserialization error starts at a later byte, or you get a different error, try a different `phpggc` exploit.
 
-Next: [Where to Now?](5-where-to-now)
+Next: [Where to Now?](htb-cybermonday-5-where-to-now.md)

@@ -1,9 +1,9 @@
 # Two Weeks to Git Good - Intro to Docker
 
-[Basic Commands](basic-commands)
-[Docker Compose](docker-compose)
-[**Docker Build**](docker-build)
-[Putting it All Together](homelab-creation)
+[Basic Commands](docker-intro-1-basic-commands.md)
+[Docker Compose](docker-intro-2-docker-compose.md)
+[**Docker Build**](docker-intro-3-docker-build.md)
+[Putting it All Together](docker-intro-4-homelab-creation.md)
 ## Docker Build
 ### Basic Dockerfile
 A Dockerfile is how we define instructions for creating a Docker image. To start, we'll create a simple image that will just print `Hello World!` when ran, using a Python script.
@@ -120,4 +120,4 @@ We've introduced a couple more new settings here.
 2. Bring the service up with `docker compose up -d` and go to the `http://localhost:5050` page again. You should now see that the page says `Hello Compose!` and tells us the running UID is 1001.
 3. Take the service down with `docker compose down`
 
-Next: [Putting it All Together](homelab-creation)
+Next: [Putting it All Together](docker-intro-4-homelab-creation.md)

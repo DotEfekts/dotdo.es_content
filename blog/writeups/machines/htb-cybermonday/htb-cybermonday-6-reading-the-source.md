@@ -1,12 +1,12 @@
 # HTB Cybermonday - Reading the Source
 
-[Initial Enumeration](1-initial-enumeration)
-[Webhook API Admin Access](2-webhook-api-admin)
-[Obtaining More Info](3-obtaining-more-info)
-[Gaining a Foothold](4-gaining-a-foothold)
-[Where to Now?](5-where-to-now)
-[**Reading the Source**](6-reading-the-source)
-[Composing Root Access](7-composing-root-access)
+[Initial Enumeration](htb-cybermonday-1-initial-enumeration.md)
+[Webhook API Admin Access](htb-cybermonday-2-webhook-api-admin.md)
+[Obtaining More Info](htb-cybermonday-3-obtaining-more-info.md)
+[Gaining a Foothold](htb-cybermonday-4-gaining-a-foothold.md)
+[Where to Now?](htb-cybermonday-5-where-to-now.md)
+[**Reading the Source**](htb-cybermonday-6-reading-the-source.md)
+[Composing Root Access](htb-cybermonday-7-composing-root-access.md)
 
 Now that we have access to an internal Docker registry, let's use `curl` to see if we can get a list of images the registry contains.
 ```shell
@@ -100,4 +100,4 @@ john@cybermonday:~$
 
 Success. Grab the flag in `user.txt` and then let's continue on to root.
 
-Next: [Composing Root Access](7-composing-root-access)
+Next: [Composing Root Access](htb-cybermonday-7-composing-root-access.md)

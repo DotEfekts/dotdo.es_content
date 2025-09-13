@@ -1,13 +1,13 @@
 The [Cybermonday](https://app.hackthebox.com/machines/557) box was my first hard Hack the Box challenge and phew, it was a lot. You should have a good grasp of application logic, JSON and Web APIs, serialisation methods, and Docker. All of these and more come into play on this box.
 # HTB Cybermonday - Initial Enumeration
 
-[**Initial Enumeration**](1-initial-enumeration)
-[Webhook API Admin Access](2-webhook-api-admin)
-[Obtaining More Info](3-obtaining-more-info)
-[Gaining a Foothold](4-gaining-a-foothold)
-[Where to Now?](5-where-to-now)
-[Reading the Source](6-reading-the-source)
-[Composing Root Access](7-composing-root-access)
+[**Initial Enumeration**](htb-cybermonday-1-initial-enumeration.md)
+[Webhook API Admin Access](htb-cybermonday-2-webhook-api-admin.md)
+[Obtaining More Info](htb-cybermonday-3-obtaining-more-info.md)
+[Gaining a Foothold](htb-cybermonday-4-gaining-a-foothold.md)
+[Where to Now?](htb-cybermonday-5-where-to-now.md)
+[Reading the Source](htb-cybermonday-6-reading-the-source.md)
+[Composing Root Access](htb-cybermonday-7-composing-root-access.md)
 
 First we run `nmap` to see what services are available on the box.
 ```shell
@@ -47,4 +47,4 @@ Success, we've now had a new link added we can navigate to. If we look through w
 
 On the last page in changelog we can see an interesting link. A link to a webhook API in the testing stages.
 
-Next: [Webhook API Admin Access](2-webhook-api-admin)
+Next: [Webhook API Admin Access](htb-cybermonday-2-webhook-api-admin.md)

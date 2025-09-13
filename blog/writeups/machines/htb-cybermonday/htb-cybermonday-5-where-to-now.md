@@ -1,12 +1,12 @@
 # HTB Cybermonday - Where to Now?
 
-[Initial Enumeration](1-initial-enumeration)
-[Webhook API Admin Access](2-webhook-api-admin)
-[Obtaining More Info](3-obtaining-more-info)
-[Gaining a Foothold](4-gaining-a-foothold)
-[**Where to Now?**](5-where-to-now)
-[Reading the Source](6-reading-the-source)
-[Composing Root Access](7-composing-root-access)
+[Initial Enumeration](htb-cybermonday-1-initial-enumeration.md)
+[Webhook API Admin Access](htb-cybermonday-2-webhook-api-admin.md)
+[Obtaining More Info](htb-cybermonday-3-obtaining-more-info.md)
+[Gaining a Foothold](htb-cybermonday-4-gaining-a-foothold.md)
+[**Where to Now?**](htb-cybermonday-5-where-to-now.md)
+[Reading the Source](htb-cybermonday-6-reading-the-source.md)
+[Composing Root Access](htb-cybermonday-7-composing-root-access.md)
 
 As you do all your regular enumeration you'll quickly realise (if you hadn't already) that this is a Docker container. Sometimes you can break out of Docker containers, but in this case it seems the vulnerabilities are all covered. One interesting directory is `/mnt`. It looks like a home directory from the host system has been mounted here. You can see the user flag is tantalisingly close, but unfortunately we can't read it at the moment. What about `authorized_keys`? Well it already exists and isn't writeable, but it is readable.
 ```
@@ -46,4 +46,4 @@ $ proxychains nmap -sT <ip to scan> -Pn -oG logs/docker_1_scan -v
 
 Once you've finished scanning, you'll see a number of services we're already aware of, such as Redis, MySQL, and the webhook API. One service that we haven't been aware of so far is one on port `5000`. A quick Google tells us this is likely to be a Docker registry service. 
 
-Next: [Reading the Source](6-reading-the-source)
+Next: [Reading the Source](htb-cybermonday-6-reading-the-source.md)
