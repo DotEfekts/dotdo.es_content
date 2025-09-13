@@ -1,12 +1,12 @@
 # HTB Cybermonday - Obtaining More Info
 
-[Initial Enumeration](/writeups/machines/htb-cybermonday/1-initial-enumeration)
-[Webhook API Admin Access](/writeups/machines/htb-cybermonday/2-webhook-api-admin)
-[**Obtaining More Info**](/writeups/machines/htb-cybermonday/3-obtaining-more-info)
-[Gaining a Foothold](/writeups/machines/htb-cybermonday/4-gaining-a-foothold)
-[Where to Now?](/writeups/machines/htb-cybermonday/5-where-to-now)
-[Reading the Source](/writeups/machines/htb-cybermonday/6-reading-the-source)
-[Composing Root Access](/writeups/machines/htb-cybermonday/7-composing-root-access)
+[Initial Enumeration](1-initial-enumeration)
+[Webhook API Admin Access](2-webhook-api-admin)
+[**Obtaining More Info**](3-obtaining-more-info)
+[Gaining a Foothold](4-gaining-a-foothold)
+[Where to Now?](5-where-to-now)
+[Reading the Source](6-reading-the-source)
+[Composing Root Access](7-composing-root-access)
 
 Now that we have the ability to make the web server send requests for us, the question is what to do with it. The first thing to try would be to get files on the system:
 ```shell
@@ -69,4 +69,4 @@ We now have an environment file with some very interesting information in it. Am
 
 As we can only send data with the webhook and not receive it without a valid HTTP response, the MySQL information is probably not going to be very useful, however Redis has a much simpler protocol that doesn't require a back and forth to update information and settings. If you'd like to know more about it you can [read about the Redis RESP protocol here](https://redis.io/docs/reference/protocol-spec/). You might have noticed in the Laravel debug information from the profile page that the app is making use of sessions. These sessions will be stored in the Redis server, so if we can find a way to inject a PHP deserialization attack payload into the Redis server, we could potentially have a way to perform RCE and gain a reverse shell.
 
-Next: [Gaining a Foothold](/writeups/machines/htb-cybermonday/4-gaining-a-foothold)
+Next: [Gaining a Foothold](4-gaining-a-foothold)

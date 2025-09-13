@@ -1,9 +1,9 @@
 # Two Weeks to Git Good - Intro to Docker
 
-[Basic Commands](/tutorials/docker-intro/basic-commands)
-[Docker Compose](/tutorials/docker-intro/docker-compose)
-[Docker Build](/tutorials/docker-intro/docker-build)
-[**Putting it All Together**](/tutorials/docker-intro/homelab-creation)
+[Basic Commands](basic-commands)
+[Docker Compose](docker-compose)
+[Docker Build](docker-build)
+[**Putting it All Together**](homelab-creation)
 ## Putting It All Together
 At this point we've learnt enough to put together a basic service stack that you can then build on. We're going to be putting this together in a modular way, so you can pick and choose which of the following you want to add to your stack.
 

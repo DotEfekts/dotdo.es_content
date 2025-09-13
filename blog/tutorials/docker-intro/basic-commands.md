@@ -1,9 +1,9 @@
 # Two Weeks to Git Good - Intro to Docker
 
-[**Basic Commands**](/tutorials/docker-intro/basic-commands)
-[Docker Compose](/tutorials/docker-intro/docker-compose)
-[Docker Build](/tutorials/docker-intro/docker-build)
-[Putting it All Together](/tutorials/docker-intro/homelab-creation)
+[**Basic Commands**](basic-commands)
+[Docker Compose](docker-compose)
+[Docker Build](docker-build)
+[Putting it All Together](homelab-creation)
 ## Basic Commands
 ### Getting Started
 
@@ -73,4 +73,4 @@ If the image for a tag is updated, the previous image becomes "dangling". It can
 10. We can remove the tag by using the same command to remove an image. If an image has multiple tags you must remove all of them to delete the image entirely. Use `docker image rm python:my_version` to remove the custom tag. Docker will delete the image as this was the only tag referencing it.
 11. If we have untagged images, usually a result of pulling the latest version of a tag rather than downloading them manually, Docker lets us delete all untagged images (as long as they're not in use by a container) with `docker image prune`. If you wish to try this, you can download the untagged `python` image again and then run the `prune` command.
 
-Next: [Docker Compose](/tutorials/docker-intro/docker-compose)
+Next: [Docker Compose](docker-compose)

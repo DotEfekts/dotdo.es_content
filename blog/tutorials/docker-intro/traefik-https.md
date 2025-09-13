@@ -1,10 +1,10 @@
 # Two Weeks to Git Good - Intro to Docker
 
-[Basic Commands](/tutorials/docker-intro/basic-commands)
-[Docker Compose](/tutorials/docker-intro/docker-compose)
-[Docker Build](/tutorials/docker-intro/docker-build)
-[Putting it All Together](/tutorials/docker-intro/homelab-creation)
-[**Appendix: Adding HTTPS**](/tutorials/docker-intro/traefik-https)
+[Basic Commands](basic-commands)
+[Docker Compose](docker-compose)
+[Docker Build](docker-build)
+[Putting it All Together](homelab-creation)
+[**Appendix: Adding HTTPS**](traefik-https)
 
 
 > **HTTPS:** Adding HTTPS support can be done fairly easily via Let's Encrypt assuming you have a domain name. An appendix will be at the end to show you how to do this using a DNS ACME challenge. This will allow you to use HTTPS certificates internally without requiring you to port forward to your Traefik service.

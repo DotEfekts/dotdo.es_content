@@ -1,9 +1,9 @@
 # Two Weeks to Git Good - Intro to Docker
 
-[Basic Commands](/tutorials/docker-intro/basic-commands)
-[**Docker Compose**](/tutorials/docker-intro/docker-compose)
-[Docker Build](/tutorials/docker-intro/docker-build)
-[Putting it All Together](/tutorials/docker-intro/homelab-creation)
+[Basic Commands](basic-commands)
+[**Docker Compose**](docker-compose)
+[Docker Build](docker-build)
+[Putting it All Together](homelab-creation)
 ## Docker Compose
 ### Basic Compose File
 Let's take our Mario game container and run it in `compose` instead. 
@@ -203,4 +203,4 @@ You should now be able to access the Traefik dashboard at `http://traefik.rr.efe
 
 12. Bring the services down with `docker compose down`.
 
-Next: [Docker Build](/tutorials/docker-intro/docker-build)
+Next: [Docker Build](docker-build)
