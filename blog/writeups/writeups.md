@@ -4,7 +4,7 @@ Here you can find various writeups I've made on different CTF challenges I've co
 ## [HTB Season II - Cybermonday](htb-cybermonday-1-initial-enumeration.md)
 A hard machine from the season two releases from HTB, with many steps needed to even obtain a shell. As the first hard box I've done I struggled in a few places, but having had experience with Docker, I found obtaining root relatively simple.
 
-## [HTB Hardware Challenge - Prison Escape](htb-prison-escape)
+## [HTB Hardware Challenge - Prison Escape](htb-prison-escape.md)
 A hardware challenge from HTB. It involves interpreting RF packet data to decipher the protocol being used. I thought this challenge was okay but made harder by an unclear UI and contradictory responses.
 
 ## [The Australian Cyber Security Games 2025](cysea-2025-writeups.md)

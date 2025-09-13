@@ -2,7 +2,7 @@
 The personal website for Chelsea Pritchard. I always have both too much and not enough free time.
 
 ## About Me
-I am a full-stack developer currently focusing on .NET Core. With experience in .NET Core ASP, Blazor, Angular, and DevOps with AWS, Docker, and Linux. I have recently started learning about pentesting and CTF challenges. Previous projects can be seen on the [projects](/projects) page. Writeups for completed CTF challenges can been seen on the [writeups](writeups.md) page. Any questions feel free to [email me](mailto:hello@dotdo.es) or message me on [discord](https://discord.gg/ZKeYp5p).
+I am a full-stack developer currently focusing on .NET Core. With experience in .NET Core ASP, Blazor, Angular, and DevOps with AWS, Docker, and Linux. I have recently started learning about pentesting and CTF challenges. Previous projects can be seen on the [projects](/projects.md) page. Writeups for completed CTF challenges can been seen on the [writeups](writeups.md) page. Any questions feel free to [email me](mailto:hello@dotdo.es) or message me on [discord](https://discord.gg/ZKeYp5p).
 
 ## About This Site
 
